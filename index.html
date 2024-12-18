@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forum Home Page</title>
+       <link rel="shortcut icon" type="image/x-icon" href="brain.png" />
+    <style>
+      /* General Styling */
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f9;
+        color: #333;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      h1, h2, h3, h4 {
+        margin: 0;
+      }
+
+      /* Navbar Styling */
+    nav {
+  background: #044e83;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+    nav .logo {
+  font-size: 1.8rem;
+  font-weight: bold; /* Bold the text */
+  margin-left: 10px; /* Adjust spacing between logo and text */
+}
+
+ .logok {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%; /* Makes the logo circular */
+  object-fit: cover;
+}
+
+    nav .menu {
+  margin-left: auto; /* Push the menu to the right */
+}
+nav .menu a {
+  margin-left: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+      nav .menu a:hover {
+  color: #ddd;
+}
+      /* Hero Section */
+      .hero {
+        background-color: rgb(255, 255, 255);
+        color: #2563eb;
+        padding: 3rem 2rem;
+        text-align: center;
+
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+    ;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Categories Section */
+      .categories {
+        text-align: center;
+        padding: 3rem 2rem;
+        background-color: #ffffff;
+      }
+
+      .categories h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: #0018d1;
+      }
+
+      .category-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .category-card {
+        background-color: #f1f5f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .category-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: #2563eb;
+      }
+
+      /* Featured Questions */
+      .featured {
+        padding: 3rem 2rem;
+        background-color: #f4f6f9;
+      }
+
+      .featured h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #0018d1;
+      }
+
+      .question {
+        background-color: #fff;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .question h4 {
+        font-size: 1.2rem;
+        color: #2563eb;
+      }
+
+      .question p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #0018d1;
+        color: white;
+        padding: 1.5rem 2rem;
+        text-align: center;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <img src="brain.png" alt="Logok" class="logok" width="35">
+      <div class="logo">MIND-AURA</div>
+      <div class="menu">
+        <a href="/sign.html">Register</a>
+        <a href="/sign.html">Log in</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to Mind-Aura Forum</h1>
+      <p>A place to share knowledge, ask questions, and connect with like-minded individuals.</p>
+      
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+      <h2>Popular Categories</h2>
+      <div class="category-list">
+        <div class="category-card">
+          <h3>Programming</h3>
+          <p>Discuss coding, debugging, and programming languages.</p>
+        </div>
+        <div class="category-card">
+          <h3>Web Development</h3>
+          <p>Learn about front-end, back-end, and full-stack development.</p>
+        </div>
+        <div class="category-card">
+          <h3>Technology</h3>
+          <p>Explore the latest trends in tech and gadgets.</p>
+        </div>
+        <div class="category-card">
+          <h3>General Knowledge</h3>
+          <p>Share facts, trivia, and knowledge from various fields.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Questions Section -->
+    <section class="featured">
+      <h2>Featured Questions</h2>
+      <div class="question">
+        <h4>How does JavaScript handle asynchronous tasks?</h4>
+        <p>Asked by <strong>Farzeen ali</strong></p>
+      </div>
+      <div class="question">
+        <h4>What are the best practices for responsive web design?</h4>
+        <p>Asked by <strong>Mansoor Ali</strong></p>
+      </div>
+      <div class="question">
+        <h4>How do I optimize SQL queries for better performance?</h4>
+        <p>Asked by <strong>Dr. sheraz Arif</strong></p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Mind-Aura Forum. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

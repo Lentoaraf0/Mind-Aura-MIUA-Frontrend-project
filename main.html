@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forum Page</title>
+    <link rel="shortcut icon" type="image/x-icon" href="brain.png" />
+    <style>
+      /* General Body Styling */
+      body {
+        background-color: #fafafa;
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #333;
+      }
+
+     /* Navbar Styling */
+    nav {
+      background: #044e83;
+      font-size: 1.5rem;
+      color: white;
+      font-weight: bold;
+      padding: 1rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: start; /* Align logo and menu at start */
+      align-items: center;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px; /* Add spacing between links */
+      margin-left: auto; /* Push links to the end */
+    }
+
+    nav a {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #ffffffdc;
+    } 
+
+     
+
+      /* Search Bar Styling */
+      .search-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2rem auto;
+        max-width: 900px;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.413);
+        border: 2px solid rgba(1, 1, 248, 0.174);
+      }
+
+      .search-bar input {
+        width: 70%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transition: border-color 0.5s;
+      }
+
+      .search-bar input:focus {
+        border-color: #2563eb;
+        color: black;
+        outline: none;
+      }
+
+      .search-bar button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        background-color: #0242cb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .search-bar button:hover {
+        background-color: #0242cbe4;
+      }
+
+      /* Post a Question Form Styling */
+      .post-question-form {
+        background-color: white;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 900px;
+        border-radius: 8px;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.413);
+        border: 2px solid rgba(1, 1, 248, 0.174);
+      }
+
+      .post-question-form h2 {
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        color: #0219c8;
+      }
+
+      .post-question-form input {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .post-question-form input:focus {
+        border-color: #2563eb;
+        outline: none;
+      }
+
+      .post-question-form button {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        background-color: #0242cb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .post-question-form button:hover {
+        background-color: #0242cbe4;
+      }
+
+      /* Forum Post Styling */
+      .forum-post {
+        background-color: #ffffff;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+
+      .forum-post:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .forum-post h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #2563eb;
+        margin-bottom: 1rem;
+      }
+
+      .forum-post p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .forum-post .tags {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .forum-post .tags span {
+        font-size: 0.875rem;
+        background-color: #eff6ff;
+        color: #2563eb;
+        padding: 0.4rem 0.8rem;
+        border-radius: 16px;
+      }
+
+      /* Answer Section Styling */
+      .answer-section {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+      }
+
+      .answer-section h4 {
+        font-size: 1.25rem;
+        color: #2563eb;
+        font-weight: bold;
+      }
+
+      .answer {
+        background-color: #f1f5f9;
+        padding: 1rem;
+        margin-top: 0.75rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .answer p {
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .answer-form input,
+      .answer-form textarea {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+
+      .answer-form button {
+        margin-top: 1rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        background-color: #0242cb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .answer-form button:hover {
+        background-color: #0242cbe4;
+      }
+    </style>
+  </head>
+  <body>
+  <nav>
+  <div class="container">
+    <img src="brain.png" alt="Logo" class="logok" width="35">
+    <div class="logo">MIND-AURA</div>
+    <div class="menu" id="menu">
+      <a href="/index.html">Home</a>
+      <a href="#">About</a>
+      <a href="/profile.html">Profile</a>
+    </div>
+  </div>
+</nav>
+
+
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="search-query" placeholder="Search questions..." aria-label="Search questions" />
+      <button onclick="searchQuestions()">Search</button>
+    </div>
+
+    <!-- Post a Question -->
+    <div class="post-question-form">
+      <h2>Post a New Question</h2>
+      <form id="post-question-form">
+        <input type="text" id="new-question" placeholder="Enter your question" required aria-label="Your question" />
+        <input type="text" id="new-author" placeholder="Your name" required aria-label="Your name" />
+        <input type="text" id="new-tags" placeholder="Tags (comma separated)" aria-label="Tags" />
+        <button type="submit">Post Question</button>
+      </form>
+    </div>
+
+    <!-- Popular Questions Section -->
+    <div class="popular-questions">
+      <h2>Popular Questions</h2>
+      <div class="popular-questions-list" id="popular-questions-list"></div>
+    </div>
+
+    <!-- Forum Posts -->
+    <div id="forum-container"></div>
+
+
+    
+</html>

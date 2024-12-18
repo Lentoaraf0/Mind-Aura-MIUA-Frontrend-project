@@ -9,13 +9,18 @@
       /* General Body Styling */
       body {
         background-color: #fafafa;
+<<<<<<< HEAD
         font-family: "Roboto", sans-serif;
+=======
+        font-family: 'Roboto', sans-serif;
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         color: #333;
       }
 
+<<<<<<< HEAD
       /* Navbar Styling */
       nav {
         background: #044e83;
@@ -48,6 +53,42 @@
       nav a:hover {
         color: #ffffffdc;
       }
+=======
+     /* Navbar Styling */
+    nav {
+      background: #044e83;
+      font-size: 1.5rem;
+      color: white;
+      font-weight: bold;
+      padding: 1rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: start; /* Align logo and menu at start */
+      align-items: center;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px; /* Add spacing between links */
+      margin-left: auto; /* Push links to the end */
+    }
+
+    nav a {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #ffffffdc;
+    } 
+
+     
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
 
       /* Search Bar Styling */
       .search-bar {
@@ -241,6 +282,7 @@
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <nav>
       <div class="container">
         <img src="brain.png" alt="Logo" class="logok" width="35" />
@@ -261,6 +303,25 @@
         placeholder="Search questions..."
         aria-label="Search questions"
       />
+=======
+  <nav>
+  <div class="container">
+    <img src="brain.png" alt="Logo" class="logok" width="35">
+    <div class="logo">MIND-AURA</div>
+    <div class="menu" id="menu">
+      <a href="/index.html">Home</a>
+      <a href="#">About</a>
+      <a href="/profile.html">Profile</a>
+    </div>
+  </div>
+</nav>
+
+
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="search-query" placeholder="Search questions..." aria-label="Search questions" />
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
       <button onclick="searchQuestions()">Search</button>
     </div>
 
@@ -268,6 +329,7 @@
     <div class="post-question-form">
       <h2>Post a New Question</h2>
       <form id="post-question-form">
+<<<<<<< HEAD
         <input
           type="text"
           id="new-question"
@@ -288,6 +350,11 @@
           placeholder="Tags (comma separated)"
           aria-label="Tags"
         />
+=======
+        <input type="text" id="new-question" placeholder="Enter your question" required aria-label="Your question" />
+        <input type="text" id="new-author" placeholder="Your name" required aria-label="Your name" />
+        <input type="text" id="new-tags" placeholder="Tags (comma separated)" aria-label="Tags" />
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
         <button type="submit">Post Question</button>
       </form>
     </div>
@@ -301,6 +368,7 @@
     <!-- Forum Posts -->
     <div id="forum-container"></div>
 
+<<<<<<< HEAD
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const forumData = [
@@ -441,4 +509,8 @@
       });
     </script>
   </body>
+=======
+
+    
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
 </html>

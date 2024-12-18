@@ -9,13 +9,51 @@
       /* General Body Styling */
       body {
         background-color: #fafafa;
+<<<<<<< HEAD
+        font-family: "Roboto", sans-serif;
+=======
         font-family: 'Roboto', sans-serif;
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         color: #333;
       }
 
+<<<<<<< HEAD
+      /* Navbar Styling */
+      nav {
+        background: #044e83;
+        font-size: 1.5rem;
+        color: white;
+        font-weight: bold;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: start; /* Align logo and menu at start */
+        align-items: center;
+      }
+
+      .menu {
+        display: flex;
+        gap: 20px; /* Add spacing between links */
+        margin-left: auto; /* Push links to the end */
+      }
+
+      nav a {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
+
+      nav a:hover {
+        color: #ffffffdc;
+      }
+=======
      /* Navbar Styling */
     nav {
       background: #044e83;
@@ -50,6 +88,7 @@
     } 
 
      
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
 
       /* Search Bar Styling */
       .search-bar {
@@ -243,6 +282,28 @@
     </style>
   </head>
   <body>
+<<<<<<< HEAD
+    <nav>
+      <div class="container">
+        <img src="brain.png" alt="Logo" class="logok" width="35" />
+        <div class="logo">MIND-AURA</div>
+        <div class="menu" id="menu">
+          <a href="/index.html">Home</a>
+          <a href="#">About</a>
+          <a href="/profile.html">Profile</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input
+        type="text"
+        id="search-query"
+        placeholder="Search questions..."
+        aria-label="Search questions"
+      />
+=======
   <nav>
   <div class="container">
     <img src="brain.png" alt="Logo" class="logok" width="35">
@@ -260,6 +321,7 @@
     <!-- Search Bar -->
     <div class="search-bar">
       <input type="text" id="search-query" placeholder="Search questions..." aria-label="Search questions" />
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
       <button onclick="searchQuestions()">Search</button>
     </div>
 
@@ -267,9 +329,32 @@
     <div class="post-question-form">
       <h2>Post a New Question</h2>
       <form id="post-question-form">
+<<<<<<< HEAD
+        <input
+          type="text"
+          id="new-question"
+          placeholder="Enter your question"
+          required
+          aria-label="Your question"
+        />
+        <input
+          type="text"
+          id="new-author"
+          placeholder="Your name"
+          required
+          aria-label="Your name"
+        />
+        <input
+          type="text"
+          id="new-tags"
+          placeholder="Tags (comma separated)"
+          aria-label="Tags"
+        />
+=======
         <input type="text" id="new-question" placeholder="Enter your question" required aria-label="Your question" />
         <input type="text" id="new-author" placeholder="Your name" required aria-label="Your name" />
         <input type="text" id="new-tags" placeholder="Tags (comma separated)" aria-label="Tags" />
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
         <button type="submit">Post Question</button>
       </form>
     </div>
@@ -283,6 +368,149 @@
     <!-- Forum Posts -->
     <div id="forum-container"></div>
 
+<<<<<<< HEAD
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const forumData = [
+          {
+            id: 1,
+            question: "What is the capital of France?",
+            answer: "France",
+            author: "MUA",
+            time: "9:04",
+            tags: ["Geography", "General Knowledge"],
+            answers: [],
+          },
+          {
+            id: 2,
+            question: "How do I use JavaScript functions?",
+            answer: "You declare functions using the function keyword.",
+            author: "John Doe",
+            time: "10:15",
+            tags: ["JavaScript", "Programming"],
+            answers: [],
+          },
+          {
+            id: 3,
+            question: "What is the best way to learn Python?",
+            answer:
+              "Practice coding daily and refer to official documentation.",
+            author: "Jane Smith",
+            time: "11:30",
+            tags: ["Python", "Programming"],
+            answers: [],
+          },
+        ];
+
+        // Render forum posts
+        const renderPopularQuestions = () => {
+          const popularQuestionsList = document.getElementById(
+            "popular-questions-list"
+          );
+          popularQuestionsList.innerHTML = ""; // Clear existing questions
+          forumData.forEach((post) => {
+            const postElement = document.createElement("div");
+            postElement.className = "forum-post";
+            postElement.innerHTML = `
+              <h3>${post.question}</h3>
+              <p>Asked by <span style="font-weight: bold;">${
+                post.author
+              }</span> · ${post.time}</p>
+              <div class="tags">${post.tags
+                .map((tag) => `<span>${tag}</span>`)
+                .join("")}</div>
+              <div class="answer-section" id="answer-section-${post.id}">
+                <h4>Answers:</h4>
+                ${post.answers
+                  .map(
+                    (answer) => `
+                  <div class="answer"><p>${answer}</p></div>
+                `
+                  )
+                  .join("")}
+                <form class="answer-form" data-post-id="${post.id}">
+                  <textarea placeholder="Your answer..." rows="4" aria-label="Your answer"></textarea>
+                  <button type="submit">Submit Answer</button>
+                </form>
+              </div>
+            `;
+            popularQuestionsList.appendChild(postElement);
+          });
+        };
+
+        // Render initial popular questions
+        renderPopularQuestions();
+
+        // Add a new question
+        const postQuestionForm = document.getElementById("post-question-form");
+        postQuestionForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const questionInput = document.getElementById("new-question");
+          const authorInput = document.getElementById("new-author");
+          const tagsInput = document.getElementById("new-tags");
+
+          if (questionInput.value.trim() && authorInput.value.trim()) {
+            forumData.push({
+              id: forumData.length + 1,
+              question: questionInput.value.trim(),
+              author: authorInput.value.trim(),
+              time: new Date().toLocaleTimeString(),
+              tags: tagsInput.value
+                .trim()
+                .split(",")
+                .map((tag) => tag.trim()),
+              answers: [],
+            });
+            questionInput.value = "";
+            authorInput.value = "";
+            tagsInput.value = "";
+            renderPopularQuestions();
+          } else {
+            alert("Question and author are required!");
+          }
+        });
+
+        // Answer submission
+        document.body.addEventListener("submit", (e) => {
+          if (e.target.classList.contains("answer-form")) {
+            e.preventDefault();
+            const postId = e.target.dataset.postId;
+            const answerText = e.target.querySelector("textarea").value.trim();
+
+            if (answerText) {
+              const post = forumData.find((p) => p.id == postId);
+              post.answers.push(answerText);
+              e.target.querySelector("textarea").value = ""; // Clear textarea
+              renderPopularQuestions(); // Re-render the questions with updated answers
+            }
+          }
+        });
+
+        // Search functionality
+        window.searchQuestions = () => {
+          const query = document
+            .getElementById("search-query")
+            .value.trim()
+            .toLowerCase();
+          if (query) {
+            const filteredData = forumData.filter(
+              (post) =>
+                post.question.toLowerCase().includes(query) ||
+                post.author.toLowerCase().includes(query) ||
+                post.tags.some((tag) => tag.toLowerCase().includes(query))
+            );
+            forumData.length = 0;
+            forumData.push(...filteredData);
+            renderPopularQuestions();
+          } else {
+            alert("Please enter a search term.");
+          }
+        };
+      });
+    </script>
+  </body>
+=======
 
     
+>>>>>>> ec64aba723b7234016a2c8344a400377a1b9c7ae
 </html>

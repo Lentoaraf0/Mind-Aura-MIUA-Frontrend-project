@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/brain.png" type="image/png">
+  <title>Categories - Mind-Aura</title>
+  <style>
+    /* Global Styles */
+    body {
+      background-color: #f9faff;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Segoe UI Semibold', Arial, sans-serif;
+    }
+
+    /* Categories Section */
+    .categories {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(to bottom, #dbeafe, #f9faff);
+    }
+
+    .categories h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #1e3a8a;
+    }
+
+    .category-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .category-card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .category-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #2563eb;
+    }
+
+    .category-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Home Button */
+    .home-button {
+      display: inline-block;
+      margin-left: 15px;
+      margin-top: 2rem;
+      background-color: #2563eb;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .home-button:hover {
+      background-color: #1e40af;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .categories h2 {
+        font-size: 2rem;
+      }
+
+      .category-card {
+        padding: 1.5rem;
+      }
+
+      .category-card h3 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="categories" id="categories">
+    <h2>Explore Popular Categories</h2>
+    <div class="category-list">
+      <div class="category-card">
+        <a href="/programming.html">
+          <h3>Programming</h3>
+          <p>Discuss coding, debugging, and programming languages.</p>
+        </a>
+      </div>
+      <div class="category-card">
+        <a href="/web-development.html">
+          <h3>Web Development</h3>
+          <p>Learn about front-end, back-end, and full-stack development.</p>
+        </a>
+      </div>
+      <div class="category-card">
+        <a href="/technology.html">
+          <h3>Technology</h3>
+          <p>Stay updated on the latest tech trends and innovations.</p>
+        </a>
+      </div>
+      <div class="category-card">
+        <a href="/ai-ml.html">
+          <h3>AI & ML</h3>
+          <p>Explore artificial intelligence and machine learning topics.</p>
+        </a>
+      </div>
+    </div>
+    <a href="/sigin.html" class="home-button">Post Question </a>
+    <a href="/index.html" class="home-button">Home </a>
+  </section>
+</body>
+</html>

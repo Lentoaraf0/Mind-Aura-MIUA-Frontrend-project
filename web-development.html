@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Category - Mind Aura</title>
+    <link rel="icon" href="/images/brain.png" type="image/png">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #dbeafe, #f9faff);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            background-color: #dbeafe;
+            color: #1e3a8a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .questions {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .question h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2563eb;
+        }
+
+        .question p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .answer {
+            margin-left: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #2563eb;
+            border-radius: 8px;
+        }
+
+        .answer p {
+            margin: 0;
+        }
+
+        .answer-form {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .answer-form input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: calc(100% - 120px);
+            background-color: rgba(248, 248, 255, 0.9);
+        }
+
+        .answer-form button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #2563eb;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .answer-form button:hover {
+            background-color: #1e40af;
+        }
+
+        .ask-question {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .ask-question h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
+
+        .ask-question input, .ask-question button {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: calc(100% - 24px);
+        }
+
+        .ask-question button {
+            background-color: #2563eb;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .ask-question button:hover {
+            background-color: #1e40af;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Web-Development</div>
+
+    <div class="questions" id="questions">
+        <!-- Example Questions -->
+       <div class="question">
+    <h3>What is Web Development?</h3>
+    <p>Asked by: Ali Raza</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> Web Development is the process of building and maintaining websites. It includes everything from building simple static pages to complex web applications. Web development typically involves front-end development (user interface) and back-end development (server-side logic and databases).</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What is the difference between front-end and back-end development?</h3>
+    <p>Asked by: Sara Ahmed</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> Front-end development focuses on the visual part of a website or application that users interact with. It includes languages like HTML, CSS, and JavaScript. Back-end development, on the other hand, deals with the server-side logic and databases, using technologies like Node.js, Python, Ruby, and databases like MySQL or MongoDB.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What is Full-Stack Development?</h3>
+    <p>Asked by: Zain Ali</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> Full-stack development refers to the development of both the front-end and back-end parts of a web application. A full-stack developer works on the client-side (HTML, CSS, JavaScript) as well as the server-side (databases, back-end programming languages) of the project.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What is the role of HTML in Web Development?</h3>
+    <p>Asked by: Hina Shah</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> HTML (HyperText Markup Language) is the standard language for creating webpages. It structures content on the web by using tags like <code>&lt;h1&gt;</code> for headings, <code>&lt;p&gt;</code> for paragraphs, and <code>&lt;a&gt;</code> for links. HTML provides the backbone of web pages and serves as the foundation for all web development.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What is CSS and why is it important?</h3>
+    <p>Asked by: Usman Raza</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> CSS (Cascading Style Sheets) is used to style and layout web pages. It controls the presentation, formatting, and layout of HTML elements, such as colors, fonts, and positioning. CSS is crucial for making websites visually appealing and ensuring they are responsive across different screen sizes.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What is JavaScript and how is it used in Web Development?</h3>
+    <p>Asked by: Mariam Hussain</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> JavaScript is a programming language that enables interactive features on web pages, such as form validation, dynamic content updates, and animations. It is used alongside HTML and CSS to build responsive, dynamic websites. JavaScript runs on the browser and can also be used on the server-side with Node.js.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What is responsive web design?</h3>
+    <p>Asked by: Imran Raza</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> Responsive web design is an approach to web design that ensures web pages look and function well on a variety of devices and screen sizes. It uses flexible grids, layouts, and media queries to adapt the content and design to different resolutions, ensuring a seamless user experience across desktop, tablet, and mobile devices.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What is the difference between a static and dynamic website?</h3>
+    <p>Asked by: Ahmed Ali</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> A static website consists of fixed content, usually built using HTML and CSS. It doesn't change unless manually updated. A dynamic website, on the other hand, can change content based on user interaction or real-time data from a server. Dynamic sites are often powered by server-side scripting languages like PHP, Node.js, or Python.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+<div class="question">
+    <h3>What are APIs and how are they used in web development?</h3>
+    <p>Asked by: Fatima Saeed</p>
+    <div class="answer">
+        <p><strong>Answer:</strong> APIs (Application Programming Interfaces) are sets of protocols and tools that allow different software applications to communicate with each other. In web development, APIs are often used to connect the front-end of a website with back-end services or third-party services, such as databases, payment gateways, or social media platforms.</p>
+    </div>
+    <div class="answer-form">
+        <input type="text" class="answer-input" placeholder="Type your answer here...">
+        <button onclick="addAnswer(this)">Submit Answer</button>
+    </div>
+</div>
+
+        <!-- Add more questions dynamically -->
+    </div>
+
+    <div class="ask-question">
+        <h3>Ask a Question</h3>
+        <form id="questionForm">
+            <input type="text" id="userQuestion" placeholder="Type your question here..." required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mind Aura Forum. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("questionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const questionText = document.getElementById("userQuestion").value;
+            const questionsDiv = document.getElementById("questions");
+
+            const newQuestion = document.createElement("div");
+            newQuestion.classList.add("question");
+            newQuestion.innerHTML = `
+                <h3>${questionText}</h3>
+                <p>Asked by: You</p>
+                <div class="answer">
+                    <p><strong>Answer:</strong> Thank you for your question! Our team will provide an answer shortly.</p>
+                </div>
+                <div class="answer-form">
+                    <input type="text" class="answer-input" placeholder="Type your answer here...">
+                    <button onclick="addAnswer(this)">Submit Answer</button>
+                </div>
+            `;
+
+            questionsDiv.appendChild(newQuestion);
+            document.getElementById("userQuestion").value = "";
+        });
+
+        function addAnswer(button) {
+            const inputField = button.previousElementSibling;
+            const answerText = inputField.value;
+
+            if (answerText.trim() !== "") {
+                const newAnswer = document.createElement("p");
+                newAnswer.innerHTML = `<strong>Answer:</strong> ${answerText}`;
+
+                const answerDiv = button.parentElement.previousElementSibling;
+                answerDiv.appendChild(newAnswer);
+
+                inputField.value = "";
+            } else {
+                alert("Please enter an answer before submitting.");
+            }
+        }
+    </script>
+</body>
+</html>

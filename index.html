@@ -3,16 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forum Home Page</title>
-    <link rel="shortcut icon" type="image/x-icon" href="brain.png" />
+    <title>MIND-AURA</title>
+    <link rel="icon" href="/images/brain.png" type="image/png">
+
+
     <style>
       /* General Styling */
       body {
         font-family: "Roboto", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f6f9;
+        background: url("./background.jpg") no-repeat center center fixed;
+        background-size: cover;
         color: #333;
+      }
+
+      .navigation button {
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      .navigation button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .content {
+        text-align: center;
+        padding: 20px;
+        font-size: 1.2em;
+      }
+
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
 
       a {
@@ -20,11 +51,8 @@
         color: inherit;
       }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-        margin: 0;
+      h1, h2, h3, h4 {
+        margin: 2px;
       }
 
       /* Navbar Styling */
@@ -36,95 +64,138 @@
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-decoration: inherit;
       }
+
       nav .logo {
         font-size: 1.8rem;
-        font-weight: bold; /* Bold the text */
-        margin-left: 10px; /* Adjust spacing between logo and text */
+        font-weight: bold;
+        margin-left: 5px;
+      }
+      nav .logo :hover {
+        text-decoration: inherit;
       }
 
       .logok {
         width: 35px;
         height: 35px;
-        border-radius: 50%; /* Makes the logo circular */
+        font-weight: bold;
+        font-size: 12px;
+        border-radius: 50%;
         object-fit: cover;
+        text-decoration: inherit;
       }
 
       nav .menu {
-        margin-left: auto; /* Push the menu to the right */
+        margin-left: auto;
+        margin-right: 5rem auto;
+        text-decoration: inherit;
+        display: flex;
       }
+
       nav .menu a {
-        margin-left: 20px;
-        font-size: 1rem;
-        font-weight: 500;
+        margin-left: 25px;
+        font-size: 1.3rem;
+        font-weight: 10;
         transition: color 0.3s;
+        text-decoration: inherit;
+        margin-top: 15px;
+        margin-bottom: 4px;
       }
 
       nav .menu a:hover {
-        color: #ddd;
+        color: #b0b0b0;
       }
+
+      /* Hamburger Menu Styling (for mobile) */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 40px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .hamburger div {
+        width: 30px;
+        height: 4px;
+        background-color: white;
+        border-radius: 10px;
+      }
+
       /* Hero Section */
       .hero {
-        background-color: rgb(255, 255, 255);
-        color: #2563eb;
-        padding: 3rem 2rem;
+        background: linear-gradient(
+            #044e83,
+            #0018d1a1,
+            #071bee57,
+            rgba(0, 123, 255, 0.484),
+            rgba(208, 207, 253, 0.731),
+            white
+          ),
+          no-repeat center center;
+        background-size: cover;
+        color: #f7f7f7;
+        padding: 18rem 3rem;
         text-align: center;
       }
 
+      /* Hero Section */
       .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+        font-size: 4rem;
+        background: white;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        text-shadow: rgba(26, 1, 1, 0.418);
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px ;
+        animation: blink 0.7s step-end infinite;
+      }
+
+      @keyframes blink {
+        from {
+          border-right-color: #8c38e5;
+        }
+        to {
+          border-right-color: transparent;
+        }
       }
 
       .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        background: rgb(223, 227, 255);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-top: 1rem;
       }
 
-      /* Categories Section */
-      .categories {
-        text-align: center;
-        padding: 3rem 2rem;
-        background-color: #ffffff;
+      .post-button {
+        background: rgba(215, 215, 255, 0.71);
+        color: #3f56ff;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
       }
 
-      .categories h2 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        color: #0018d1;
-      }
-
-      .category-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .category-card {
-        background-color: #f1f5f9;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      .category-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-
-      .category-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-        color: #2563eb;
+      .post-button:hover {
+        background: rgba(173, 216, 255, 0.9);
+        color: #3f56ff;
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        text-decoration: inherit;
       }
 
       /* Featured Questions */
       .featured {
         padding: 3rem 2rem;
-        background-color: #f4f6f9;
+        background-color: white;
       }
 
       .featured h2 {
@@ -135,7 +206,8 @@
       }
 
       .question {
-        background-color: #fff;
+        background: linear-gradient(rgb(235, 237, 255), white),
+          no-repeat center center;
         padding: 1.5rem;
         margin-bottom: 1rem;
         border-radius: 8px;
@@ -154,7 +226,7 @@
 
       /* Footer Work */
       footer {
-        background-color: #0018d1;
+        background-color: #0320fc91;
         color: white;
         padding: 1.5rem 2rem;
         text-align: center;
@@ -164,71 +236,215 @@
         margin: 0;
         font-size: 1rem;
       }
+
+      /* Animation Overlay */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        z-index: 9999;
+      }
+
+      #overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      #hero-title {
+        text-align: center;
+        padding: 10px;
+        font-size: 4vw;
+        word-wrap: break-word;
+      }
+
+      @media (max-width: 600px) {
+        #hero-title {
+          font-size: 6vw;
+        }
+
+        nav .menu {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          background-color: #044e83;
+        }
+
+        nav .menu.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
     </style>
   </head>
   <body>
+    <div class="overlay" id="overlay">
+      <video autoplay muted playsinline>
+        <source src="./Animation - 1734700155093 (1).webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
     <!-- Navbar -->
     <nav>
-      <img src="brain.png" alt="Logok" class="logok" width="35" />
-      <div class="logo">MIND-AURA</div>
-      <div class="menu">
-        <a href="/sigin.html">Register</a>
-        <a href="/sigin.html">Log in</a>
+      <img src="/images/brain.png" alt="Logok" class="logok" width="35" />
+      <div class="logo"><a href="/index.html">MIND-AURA</a></div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="menu" id="menu">
+        <a href="/index.html">Home</a>
+        <a href="/categories.html">Categories</a>
+        <a href="/about.html">About Us</a>
+        <a href="/sigin.html">Log In</a>
+        <a href="/sigin.html">Sign up</a>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-      <h1>Welcome to Mind-Aura Forum</h1>
+      <h1 id="hero-title"></h1>
       <p>
-        A place to share knowledge, ask questions, and connect with like-minded
-        individuals.
+        A platform for knowledge sharing, inquiry, and fostering connections
+        among like-minded professionals.
       </p>
+     <a href="/sigin.html" class="post-button">Post Question</a>
+
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories">
-      <h2>Popular Categories</h2>
-      <div class="category-list">
-        <div class="category-card">
-          <h3>Programming</h3>
-          <p>Discuss coding, debugging, and programming languages.</p>
-        </div>
-        <div class="category-card">
-          <h3>Web Development</h3>
-          <p>Learn about front-end, back-end, and full-stack development.</p>
-        </div>
-        <div class="category-card">
-          <h3>Technology</h3>
-          <p>Explore the latest trends in tech and gadgets.</p>
-        </div>
-        <div class="category-card">
-          <h3>General Knowledge</h3>
-          <p>Share facts, trivia, and knowledge from various fields.</p>
-        </div>
-      </div>
-    </section>
+
 
     <!-- Featured Questions Section -->
     <section class="featured">
       <h2>Featured Questions</h2>
       <div class="question">
-        <h4>How does JavaScript handle asynchronous tasks?</h4>
-        <p>Asked by <strong>Farzeen ali</strong></p>
+        <h4>How do I optimize my code?</h4>
+        <p>Looking for best practices and tips to write efficient code.</p>
+      </div>
+      <div class="question">
+        <h4>What are the latest trends in AI?</h4>
+        <p>Discuss the future of artificial intelligence and its impact.</p>
+      </div>
+      <div class="question">
+        <h4>What are the key differences between SQL and NoSQL databases?</h4>
+        <p>
+          Understanding the strengths and use cases of SQL and NoSQL databases.
+        </p>
+      </div>
+      <div class="question">
+        <h4>How can I improve my web development skills?</h4>
+        <p>Seeking advice on mastering front-end and back-end technologies.</p>
       </div>
       <div class="question">
         <h4>What are the best practices for responsive web design?</h4>
-        <p>Asked by <strong>Mansoor Ali</strong></p>
+        <p>Looking for tips on making websites look great on all devices.</p>
       </div>
       <div class="question">
-        <h4>How do I optimize SQL queries for better performance?</h4>
-        <p>Asked by <strong>Dr. sheraz Arif</strong></p>
+        <h4>What are the security best practices for web applications?</h4>
+        <p>
+          Seeking recommendations on securing web apps against common
+          vulnerabilities.
+        </p>
+      </div>
+      <div class="question">
+        <h4>What is the difference between React.js and Vue.js?</h4>
+        <p>
+          Understanding the pros and cons of these popular JavaScript
+          frameworks.
+        </p>
+      </div>
+      <div class="question">
+        <h4>How do I get started with machine learning?</h4>
+        <p>
+          Looking for beginner-friendly resources and tips to dive into machine
+          learning.
+        </p>
+      </div>
+      <div class="question">
+        <h4>What are the best tools for debugging JavaScript?</h4>
+        <p>
+          Seeking advice on tools and techniques for effective JavaScript
+          debugging.
+        </p>
+      </div>
+      <div class="question">
+        <h4>What are microservices and when should I use them?</h4>
+        <p>
+          Understanding the concept of microservices and their applications in
+          software development.
+        </p>
+      </div>
+      <div class="question">
+        <h4>How do I scale a web application effectively?</h4>
+        <p>
+          Seeking strategies to ensure web applications can handle high traffic
+          and growth.
+        </p>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer>
-      <p>&copy; 2024 Mind-Aura Forum. All rights reserved.</p>
+      <p>&copy; 2024 Mind-Aura. All rights reserved.</p>
     </footer>
+
+    <script>
+            // Typewriter Effect
+      window.addEventListener("DOMContentLoaded", () => {
+        const text = "Welcome to Mind-Aura!";
+        let i = 0;
+        const typingSpeed = 70;
+        const title = document.getElementById("hero-title");
+
+        function typeWriter() {
+          return new Promise((resolve) => {
+            if (i < text.length) {
+              title.innerHTML += text.charAt(i);
+              i++;
+              setTimeout(() => {
+                typeWriter().then(resolve);
+              }, typingSpeed);
+            } else {
+              resolve();
+            }
+          });
+        }
+
+        setTimeout(() => {
+          typeWriter().then(() => {
+            setTimeout(() => {
+              document.getElementById("overlay").classList.add("hidden");
+            }, 1000);
+          });
+        }, 4000);
+
+        setTimeout(() => {
+          if (!document.getElementById("overlay").classList.contains("hidden")) {
+            document.getElementById("overlay").classList.add("hidden");
+          }
+        }, 4000);
+      });
+
+      // Hamburger Menu Toggle
+      const hamburger = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+
+      hamburger.addEventListener('click', () => {
+        menu.classList.toggle('active');
+      });
+    </script>
   </body>
 </html>

@@ -8,7 +8,15 @@
     <style>
       body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background: linear-gradient(
+            #044e83,
+            #0018d1a1,
+            #071bee57,
+            rgba(0, 123, 255, 0.484),
+            rgba(208, 207, 253, 0.731),
+            white
+          ),
+          no-repeat center center;
         margin: 0;
         padding: 0;
         display: flex;
@@ -20,7 +28,7 @@
       .container {
         width: 90%;
         max-width: 400px;
-        background: #ffffff;
+        background: rgba(215, 215, 255, 0.71);
         padding: 20px;
         border-radius: 30px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.355);
@@ -45,8 +53,15 @@
         padding: 10px;
         font-size: 16px;
         border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-bottom: 20px;
+        border-radius: 12px;
+        margin-bottom: 5px;
+        background-color: rgba(236, 234, 255, 0.482);
+      }
+
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-bottom: 15px;
       }
 
       button {
@@ -55,7 +70,7 @@
         background-color: #007bff;
         color: #fff;
         border: none;
-        border-radius: 4px;
+        border-radius: 15px;
         cursor: pointer;
       }
 
@@ -82,33 +97,18 @@
     <!-- Sign Up Form -->
     <div class="container" id="signup">
       <h2>Sign Up</h2>
-      <form onsubmit="switchToSignIn(); return false;">
+      <form onsubmit="signUp(); return false;">
         <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter your username"
-          required
-        />
+        <input type="text" id="username" placeholder="Enter your username" required />
+        <div id="username-error" class="error"></div>
 
         <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        />
+        <input type="email" id="email" placeholder="Enter your email" required />
+        <div id="email-error" class="error"></div>
 
         <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-        />
+        <input type="password" id="password" placeholder="Enter your password" required />
+        <div id="password-error" class="error"></div>
 
         <button type="submit">Sign Up</button>
       </form>
@@ -121,24 +121,14 @@
     <!-- Sign In Form -->
     <div class="container" id="signin" style="display: none">
       <h2>Sign In</h2>
-      <form onsubmit="redirectToHomePage(); return false;">
+      <form onsubmit="signIn(); return false;">
         <label for="login-username">Username or Email</label>
-        <input
-          type="text"
-          id="login-username"
-          name="login-username"
-          placeholder="Enter your username or email"
-          required
-        />
+        <input type="text" id="login-username" placeholder="Enter your username or email" required />
+        <div id="login-username-error" class="error"></div>
 
         <label for="login-password">Password</label>
-        <input
-          type="password"
-          id="login-password"
-          name="login-password"
-          placeholder="Enter your password"
-          required
-        />
+        <input type="password" id="login-password" placeholder="Enter your password" required />
+        <div id="login-password-error" class="error"></div>
 
         <button type="submit">Sign In</button>
       </form>
@@ -149,23 +139,76 @@
     </div>
 
     <script>
-      // Switch to Sign In page after Sign Up
+      // Switch between forms
       function switchToSignIn() {
-        alert("Your account has been created. Please sign in.");
-        document.getElementById("signup").style.display = "none"; // Hide the Sign Up form
-        document.getElementById("signin").style.display = "block"; // Show the Sign In form
+        document.getElementById("signup").style.display = "none";
+        document.getElementById("signin").style.display = "block";
       }
 
-      // Switch to Sign Up page after Sign In
       function switchToSignUp() {
-        document.getElementById("signin").style.display = "none"; // Hide the Sign In form
-        document.getElementById("signup").style.display = "block"; // Show the Sign Up form
+        document.getElementById("signin").style.display = "none";
+        document.getElementById("signup").style.display = "block";
       }
 
-      // Redirect to index.html after Sign In
-      function redirectToHomePage() {
-        alert("Signed in successfully!");
-        window.location.href = "./q-a.html"; // Redirect to index.html
+      // Clear error messages
+      function clearErrors() {
+        document.querySelectorAll(".error").forEach((el) => (el.textContent = ""));
+      }
+
+      // Sign Up Functionality
+      function signUp() {
+        clearErrors();
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        let hasError = false;
+
+        if (username.length < 3) {
+          document.getElementById("username-error").textContent = "Username must be at least 3 characters.";
+          hasError = true;
+        }
+
+        if (!email.includes("@") || !email.includes(".")) {
+          document.getElementById("email-error").textContent = "Please enter a valid email.";
+          hasError = true;
+        }
+
+        if (password.length < 6) {
+          document.getElementById("password-error").textContent = "Password must be at least 6 characters.";
+          hasError = true;
+        }
+
+        if (!hasError) {
+          // Save data in localStorage
+          localStorage.setItem("username", username);
+          localStorage.setItem("email", email);
+          localStorage.setItem("password", password);
+          alert("Sign-up successful! Please sign in.");
+          switchToSignIn();
+        }
+      }
+
+      // Sign In Functionality
+      function signIn() {
+        clearErrors();
+        const loginUsername = document.getElementById("login-username").value;
+        const loginPassword = document.getElementById("login-password").value;
+
+        const storedUsername = localStorage.getItem("username");
+        const storedEmail = localStorage.getItem("email");
+        const storedPassword = localStorage.getItem("password");
+
+        if (
+          (loginUsername === storedUsername || loginUsername === storedEmail) &&
+          loginPassword === storedPassword
+        ) {
+          alert("Sign-in successful!");
+          window.location.href = "./q-a.html"; // Redirect to home page
+        } else {
+          document.getElementById("login-username-error").textContent =
+            "Invalid username/email or password.";
+        }
       }
     </script>
   </body>

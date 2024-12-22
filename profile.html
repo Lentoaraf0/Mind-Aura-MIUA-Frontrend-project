@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forum - Profile</title>
+    <title>Profile Edit</title>
     <link rel="stylesheet" href="profile.css" />
     <link
       rel="shortcut icon"
@@ -22,15 +22,15 @@
 
       /* Body and General Styling */
       body {
-        background-color: #f8f9fc;
-        color: #333;
-        line-height: 1.6;
+         background: linear-gradient(to bottom, #dbeafe, #f9faff);
+        line-height: 2;
         font-size: 16px;
+        min-height: 737px;
       }
 
       /* Header */
       header {
-        background: linear-gradient(90deg, #0b44f0, #0242cb);
+        background: #044e83;
         color: white;
         padding: 15px;
         text-align: center;
@@ -47,7 +47,7 @@
         max-width: 1000px;
         margin: 30px auto;
         padding: 25px;
-        background-color: white;
+        background: white;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       }
@@ -77,12 +77,14 @@
         margin: 15px 0;
         padding: 12px;
         border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 1rem;
+        background-color: rgba(249, 249, 255, 0.804);
+        border-radius: 16px;
+        font-size: 1.28rem;
       }
 
       textarea {
         min-height: 120px;
+        
       }
 
       input:focus,
@@ -92,53 +94,11 @@
         box-shadow: 0 0 8px rgba(78, 115, 223, 0.3);
       }
 
-      /* Posts */
-      .post {
-        border: 1px solid #e1e1e1;
-        padding: 20px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-        transition: transform 0.2s;
-      }
-
-      .post:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      }
-
-      .like-btn {
-        color: #4e73df;
-        cursor: pointer;
-        font-weight: bold;
-        margin-right: 15px;
-      }
-
-      .like-btn.liked {
-        color: #e74a3b;
-      }
-
-      .comment {
-        color: #666;
-        font-size: 0.9rem;
-      }
-
       /* Typography */
       h2 {
         margin-bottom: 15px;
         color: #2e59d9;
         font-size: 1.5rem;
-      }
-
-      /* Links */
-      a {
-        text-decoration: none;
-        color: #4e73df;
-      }
-
-      a:hover {
-        text-decoration: underline;
       }
 
       /* Footer */
@@ -171,14 +131,46 @@
     <header>Profile Page</header>
     <div class="container">
       <h2>Your Profile</h2>
-      <p>Name: Window</p>
-      <p>Father's Name: Kali Linux</p>
-      <p>Phone Number: 0123456789</p>
-      <p>Country: Technology's world</p>
-      <p>Date of Birth: 1995-02-05</p>
-      <p>Topics of Interest: Technology, Science</p>
-      <p>Occupation: Student</p>
+      <label>Name:</label>
+      <input type="text" id="name" value="Window" />
+
+      <label>Father's Name:</label>
+      <input type="text" id="fatherName" value="Kali Linux" />
+
+      <label>Phone Number:</label>
+      <input type="text" id="phone" value="0123456789" />
+
+      <label>Country:</label>
+      <input type="text" id="country" value="Technology's world" />
+
+      <label>Date of Birth:</label>
+      <input type="date" id="dob" value="1995-02-05" />
+
+      <label>Topics of Interest:</label>
+      <input type="text" id="interests" value="Technology, Science" />
+
+      <label>Occupation:</label>
+      <input type="text" id="occupation" value="Student" />
+
+      <button onclick="saveChanges()">Save Changes</button>
       <a href="/q-a.html"><button>Go to Feed</button></a>
     </div>
+
+    <script>
+      function saveChanges() {
+        const profileData = {
+          name: document.getElementById("name").value,
+          fatherName: document.getElementById("fatherName").value,
+          phone: document.getElementById("phone").value,
+          country: document.getElementById("country").value,
+          dob: document.getElementById("dob").value,
+          interests: document.getElementById("interests").value,
+          occupation: document.getElementById("occupation").value,
+        };
+
+        alert("Profile updated successfully!\n" + JSON.stringify(profileData, null, 2));
+        console.log(profileData); // Log updated data (for debugging or future use)
+      }
+    </script>
   </body>
 </html>
